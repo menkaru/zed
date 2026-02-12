@@ -21004,7 +21004,7 @@ impl Editor {
         }
 
         let settings = self.buffer.read(cx).language_settings(cx);
-        if settings.show_wrap_guides {
+        if settings.show_wrap_guides || self.show_wrap_guides == Some(true) {
             match self.soft_wrap_mode(cx) {
                 SoftWrap::Column(soft_wrap) => {
                     wrap_guides.push((soft_wrap as usize, true));
