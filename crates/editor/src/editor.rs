@@ -21116,6 +21116,18 @@ impl Editor {
         cx.notify();
     }
 
+    pub fn toggle_wrap_guides(&mut self, _: &ToggleWrapGuides, _: &mut Window, cx: &mut Context<Self>) {
+        let currently_enabled = self.show_wrap_guides.unwrap_or_else(|| {
+            self.buffer
+                .read(cx)
+                .language_settings(cx)
+                .show_wrap_guides
+        });
+        println!("Currently_enabled: {}", currently_enabled);
+        self.show_wrap_guides = Some(!currently_enabled);
+        cx.notify();
+    }
+
     pub fn toggle_tab_bar(&mut self, _: &ToggleTabBar, _: &mut Window, cx: &mut Context<Self>) {
         let Some(workspace) = self.workspace() else {
             return;
