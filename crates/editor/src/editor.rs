@@ -21123,7 +21123,6 @@ impl Editor {
                 .language_settings(cx)
                 .show_wrap_guides
         });
-        println!("Currently_enabled: {}", currently_enabled);
         self.show_wrap_guides = Some(!currently_enabled);
         cx.notify();
     }
